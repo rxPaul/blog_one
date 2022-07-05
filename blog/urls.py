@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import *
+from . import views
+# from .forms import TagForm
 
 urlpatterns = [
-    path('', posts_list, name='posts_list_url'),
-    path('post/<str:slug>/', PostDetail.as_view, name='post_detail_url'),
-    path('tags/', tags_list, name='tags_list_url'),
-    path('tag/create', TagForm, name='tag_create_url'),
-    path('tag/<str:slug>/', TagDetail.as_view, name='tag_detail_url')
+    path('', views.posts_list, name='posts_list_url'),
+    path('post/<str:slug>/', views.PostDetail.as_view, name='post_detail_url'),
+    path('tags/', views.tags_list, name='tags_list_url'),
+    path('tag/create', views.TagCreate.as_view, name='tag_create_url'),
+    path('tag/<str:slug>/', views.TagDetail.as_view, name='tag_detail_url')
     ]
