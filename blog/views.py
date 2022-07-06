@@ -28,6 +28,7 @@ class TagCreate(View):
 
     def post(self, request):
         bound_form = TagForm(request.POST)
+
         if bound_form.is_valid():
             new_tag = bound_form.save()
             return redirect(new_tag)
