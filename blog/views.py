@@ -56,3 +56,10 @@ class TagCreate(ObjectCreateMixin, View):
 class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'blog/tag_detail.html'
+
+
+class TagUpdate(View):
+    def get(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        bound_form = TagForm(instance=tag)
+        return render(request, 'blog/tag_update_form.html', context={'form': bound_form, 'tag': tag})
